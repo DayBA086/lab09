@@ -1,0 +1,31 @@
+package graph;
+
+public class Edge<E> {
+    private Vertex<E> refDest;
+    private int weight;
+
+    public Edge(Vertex<E> refDest) {
+        this(refDest, -1);
+    }
+
+    public Edge(Vertex<E> refDest, int weight) {
+        this.refDest = refDest;
+        this.weight = weight;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof Edge<?>) {
+            Edge<E> e = (Edge<E>) o;
+            return this.refDest.equals(e.refDest);
+        }
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        return (weight > -1)
+            ? refDest.getData() + " [" + weight + "], "
+            : refDest.getData() + ", ";
+    }
+}
